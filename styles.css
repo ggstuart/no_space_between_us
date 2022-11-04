@@ -6,6 +6,9 @@ body {
     background-image: url(screenshots/experiment-0-2.png);
     background-size: cover;
 }
+header, main {
+    margin-inline: 1em;
+}
 header {
     display: flex;
     justify-content: space-between;
