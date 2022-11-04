@@ -1,0 +1,32 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin-inline: auto;
+}
+main {
+    margin-block: 2em;
+}
+canvas {
+    background: black;
+    /* width: 600px; */
+    /* max-height: 600px; */
+    width: 100%;
+}
+#panel {
+    width: 60%;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+nav {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+nav a {
+    padding: 0.25em 0.5em;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+}
