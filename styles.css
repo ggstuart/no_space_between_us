@@ -33,6 +33,7 @@ canvas {
 }
 nav {
     display: flex;
+    flex-direction: column;
     gap: 1em;
     justify-content: flex-end;
 }
@@ -45,4 +46,10 @@ nav a {
 }
 a {
     color: inherit;
+}
+
+@media screen and (min-width: 700px) {
+    nav {
+        flex-direction: row;
+    }
 }
