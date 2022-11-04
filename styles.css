@@ -2,9 +2,22 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     max-width: 800px;
     margin-inline: auto;
+    background-color: #eee;
+    background-image: url(screenshots/experiment-0-2.png);
+    background-size: cover;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 main {
     margin-block: 2em;
+}
+main section {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
 }
 canvas {
     background: black;
@@ -29,4 +42,7 @@ nav a {
     background-color: #333;
     color: white;
     text-decoration: none;
+}
+a {
+    color: inherit;
 }
