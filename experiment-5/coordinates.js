@@ -22,6 +22,13 @@ export class Point {
         this.y += Math.sin(angle) * distance;
     }
 
+    static fromPolar(angle, distance) {
+        return new Point(
+            Math.cos(angle) * distance,
+            Math.sin(angle) * distance
+        );
+    }
+
     clone() {
         return new Point(this.x, this.y);
     }
