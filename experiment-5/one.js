@@ -16,7 +16,7 @@ export class One {
         this.nSegments = nSegments;
         this.paired = false;
         this.type = ['m', 'f'][Math.floor(Math.random() * 2)]
-
+        this.rotation = 0;
         // call update to generate segments
         // Array(this.nSegments).fill().map((_, i) => this.update(16))
     }
@@ -31,7 +31,9 @@ export class One {
     update(elapsed) {
         const dist = elapsed * this.speed;
         this.addSegment()
-        this.angle += (Math.random() - 0.5) * this.jitter;
+        this.rotation += (Math.random() - 0.5) * this.jitter;
+        this.rotation = Math.max(Math.min(this.rotation, 0.1), -0.1)
+        this.angle += this.rotation;
         this.loc.movePolar(this.angle, dist);
     }
 
