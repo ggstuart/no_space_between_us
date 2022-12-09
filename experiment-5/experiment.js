@@ -9,24 +9,51 @@ const wrap = (min, max) => (value) => {
     return value < min ? value + span : value > max ? (value - min) % span : value;
 }
 
-function newInput(id, label, min, step, max, obj, property) {
-    const myInput = document.createElement('input');
+function newMinMaxPair(id, label, min, max, step, obj, property) {
+    const minInput = document.createElement('input');
+    const maxInput = document.createElement('input');
     const myLabel = document.createElement('label');
-    myInput.id = id;
-    myLabel.htmlFor = myInput.id;
-    myLabel.textContent = label
-    myInput.type = "range";
-    myInput.min = min;
-    myInput.step = step;
-    myInput.max = max;
-    myInput.value = obj[property];
-    myInput.addEventListener('input', ev => {
-        obj[property] = ev.target.value;
+    minInput.id = `min_${id}`;
+    maxInput.id = `max_${id}`;
+    myLabel.htmlFor = minInput.id;
+    myLabel.textContent = `min ${label} max`
+    minInput.type = "range";
+    maxInput.type = "range";
+    minInput.min = min;
+    maxInput.min = min;
+    minInput.max = max;
+    maxInput.max = max;
+    minInput.step = step;
+    maxInput.step = step;
+    minInput.value = obj[`${property}_min`];
+    maxInput.value = obj[`${property}_max`];
+    console.log(minInput.value, maxInput.value);
+    minInput.addEventListener('input', ev => {
+        const value = parseFloat(ev.target.value);
+        obj[`${property}_min`] = value;
+        if(value > maxInput.value) {
+            maxInput.value = value;
+            obj[`${property}_max`] = value;
+        }
+        console.log(minInput.value, maxInput.value);
+
+    });
+    maxInput.addEventListener('input', ev => {
+        const value = parseFloat(ev.target.value);
+        obj[`${property}_max`] = value;
+        if(value < minInput.value) {
+            minInput.value = value;
+            obj[`${property}_min`] = value;
+        }
+        console.log(minInput.value, maxInput.value);
+
     });
     // const div = document.createElement('div');
+    panel.appendChild(minInput);
     panel.appendChild(myLabel);
-    panel.appendChild(myInput);
+    panel.appendChild(maxInput);
     // panel.appendChild(div);
+
 }
 
 export class Experiment {
@@ -42,19 +69,13 @@ export class Experiment {
         this.thing = new One(
             Math.random() * this.w, 
             Math.random() * this.h,
-            Math.random() * Math.random() * Math.PI,
-            10 + Math.floor(Math.random() * 50),
             0.1 + Math.random() * Math.random(),
-            Math.random() * 5
         );
 
-        newInput("jitterInput", "Jitter", 0, 0.01, Math.PI, this.thing, "jitter");
-        newInput("nSegmentsInput", "Segments", 0, 1, 200, this.thing, "nSegments");
-        newInput("speedInput", "Speed", 0, 0.01, 1, this.thing, "speed");
-        newInput("sizeInput", "Size", 1, 0.1, 10, this.thing, "size");
-        
-        this.paused = true;
-        // this.step();
+        newMinMaxPair("opacityInput", "OPACITY", 0, 1, 0.01, this.thing, "opacity")
+        newMinMaxPair("radiusInput", "RADIUS", 0, 300, 0.01, this.thing, "radius")
+        newMinMaxPair("countInput", "COUNT", 0, 50, 1, this.thing, "count")
+
         this.play();
     }
 
