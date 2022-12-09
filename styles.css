@@ -34,6 +34,10 @@ canvas {
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
+#panel.three {
+    grid-template-columns: 1fr max-content 1fr;
+}
+
 nav {
     display: flex;
     flex-direction: column;
