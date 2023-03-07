@@ -2,6 +2,8 @@
 // They can vary according to any pattern, but will need to be given a delta
 // Maximum and minimum levels should be set
 
+import { two_pi } from "./constants.js";
+
 class ClampedValue {
     constructor({value, min, max}) {
         this.value = value;
@@ -50,3 +52,19 @@ export class DoubleRandomWalk extends RandomWalk {
     }
 }
 
+export class Sinusoid {
+    constructor(wavelength) {
+        this.wavelength = wavelength;
+        this._value = 0;
+    }
+
+    update(delta) {
+        this._value += delta;
+        this._value %= this.wavelength * 10;
+    }
+
+    value(phase) {
+        const angle = (this._value + phase) * two_pi;
+        return (Math.sin(angle)/2) + 0.5;
+    }
+}
