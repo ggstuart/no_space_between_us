@@ -1,10 +1,13 @@
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    max-width: 800px;
     margin-inline: auto;
-    background-color: #eee;
-    background-image: url(screenshots/experiment-0-2.png);
-    background-size: cover;
+    /* background-color: hsl(210, 50%, 40%); */
+    /* background-color: linear-gradient(hsl(210, 50%, 40%), hsl(220, 60%, 40%)); */
+    /* background-image: url(screenshots/experiment-0-3.png); */
+    background-size: 250px;
+    background: linear-gradient(hsl(210, 50%, 40%), hsl(220, 60%, 40%)), url(screenshots/experiment-0-3.png);
+    color: white;
+    max-width: 800px;
 }
 header, main {
     margin-inline: 1em;
@@ -21,21 +24,29 @@ main section {
     display: grid;
     grid-template-columns: 1fr max-content;
     align-items: center;
+    max-width: 100%;
 }
 canvas {
     background: black;
     /* width: 600px; */
     /* max-height: 600px; */
-    width: 100%;
+    max-width: 100%;
 }
 #panel {
-    width: 60%;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px) brightness(2);
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    gap: 0.25rem;
+    grid-template-columns: auto 1fr;
+    padding: 1rem;
+    overflow: auto;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: black;
 }
 #panel.three {
-    grid-template-columns: 1fr max-content 1fr;
+    grid-template-columns: 1fr auto 1fr;
 }
 
 nav {
@@ -56,8 +67,23 @@ a {
     color: inherit;
 }
 
+.responsive {
+    display: grid;
+    place-content: center;
+}
+
 @media screen and (min-width: 700px) {
     nav {
         flex-direction: row;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        max-width: 1200px;
+    }
+    .responsive {
+        display: grid;
+        grid-template-columns: 800px auto;
     }
 }
