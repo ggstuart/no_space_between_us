@@ -1,13 +1,12 @@
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-inline: auto;
-    /* background-color: hsl(210, 50%, 40%); */
-    /* background-color: linear-gradient(hsl(210, 50%, 40%), hsl(220, 60%, 40%)); */
-    /* background-image: url(screenshots/experiment-0-3.png); */
-    background-size: 250px;
-    background: linear-gradient(hsl(210, 50%, 40%), hsl(220, 60%, 40%)), url(screenshots/experiment-0-3.png);
+    margin: 0 auto;
+    background: linear-gradient(hsl(210, 50%, 40%), hsl(220, 60%, 70%)), url(./screenshots/experiment-8-1.png);
+    background-blend-mode: color-burn;
+    background-size: cover;
     color: white;
-    max-width: 800px;
+    max-width: 1000px;
+    min-height: 100svh;
 }
 header, main {
     margin-inline: 1em;
@@ -18,15 +17,23 @@ header {
     align-items: center;
 }
 main {
-    margin-block: 2em;
 }
 main section {
     display: grid;
-    grid-template-columns: 1fr max-content;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    border-radius: 3px;
+    padding: 1em;
+    backdrop-filter: brightness(0.8);
     align-items: center;
     max-width: 100%;
+    margin-block: 2em;
+    overflow: auto;
 }
-canvas {
+main section h2 {
+    grid-column: span 2;
+}
+canvas:first-of-type {
     background: black;
     /* width: 600px; */
     /* max-height: 600px; */
@@ -58,10 +65,11 @@ nav {
 
 nav a {
     padding: 0.25em 0.5em;
-    background-color: #333;
+    background-color: hsl(210, 50%, 20%);
     color: white;
     text-decoration: none;
     white-space: nowrap;
+    border-radius: 2px;
 }
 a {
     color: inherit;
@@ -72,9 +80,48 @@ a {
     place-content: center;
 }
 
+.overlap {
+    display: grid;
+}
+.overlap > * {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+section.screenshots {
+    grid-template-columns: 1fr 1fr;
+}
+
+section.screenshots h2 {
+    grid-column: span 2;
+}
+@media screen and (min-width: 500px) {
+    section.screenshots {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    section.screenshots h2 {
+        grid-column: span 3;
+    }    
+}
+
+
+section.screenshots img {
+    max-width: 100%;
+    background: radial-gradient(hsla(50, 50%, 10%, 0.9), hsla(20, 50%, 0%, 0.9));
+    border-radius: 5px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+
 @media screen and (min-width: 700px) {
+    body {
+        font-size: 1.4em;
+    }
     nav {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 
