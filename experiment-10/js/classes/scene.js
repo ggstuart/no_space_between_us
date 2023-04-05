@@ -9,11 +9,6 @@ export class Scene{
         this.ctx = ctx1;
         this.paper = ctx2;
         this.devMode = true;
-        // this.spirals = Array.from([this.topLeft, this.topMiddle, this.topRight], (loc) => {
-        //     return new Spiral(loc, (Math.random() - 0.5) * 2, 150, 0.99, 10 + Math.random() * 50, 10)
-        // });
-        // this.spirals = Array.from({length: 3}, () => Spiral.random(this.center));
-
         const coords = [
             [this.topLeft, this.bottomLeft],
             [this.topMiddle, this.bottomMiddle],
