@@ -1,11 +1,11 @@
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0 auto;
-    background: linear-gradient(hsl(210, 50%, 40%), hsl(220, 60%, 70%)), url(./screenshots/experiment-8-1.png);
-    background-blend-mode: color-burn;
+    background: linear-gradient(hsl(210, 100%, 50%), hsl(220, 100%, 60%)), url(./screenshots/experiment-11-6.png);
+    background-blend-mode: lighten;
     background-size: cover;
     color: white;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     min-height: 100svh;
 }
 header, main {
@@ -16,28 +16,36 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-main {
-}
 main section {
     display: grid;
     grid-template-columns: 3fr 2fr;
     gap: 2rem;
     border-radius: 3px;
     padding: 1em;
-    backdrop-filter: brightness(0.8);
+    background: black;
+    /* backdrop-filter: brightness(0.4); */
     align-items: center;
     max-width: 100%;
     margin-block: 2em;
     overflow: auto;
+    border-radius: 5px;
 }
 main section h2 {
     grid-column: span 2;
 }
-canvas:first-of-type {
+canvas {
     background: black;
+    width: 100%;
+    /* height: auto; */
+    object-fit: cover;
+    height: 70svh;
+}
+canvas:first-of-type {
+    background: transparent;
     /* width: 600px; */
     /* max-height: 600px; */
     max-width: 100%;
+    z-index: 100;
 }
 #panel {
     box-sizing: border-box;
@@ -112,6 +120,7 @@ section.screenshots img {
     border-radius: 5px;
     aspect-ratio: 1;
     object-fit: cover;
+    border: 1px solid white;
 }
 
 
@@ -127,10 +136,10 @@ section.screenshots img {
 
 @media screen and (min-width: 1000px) {
     main {
-        max-width: 1200px;
+        /* max-width: 1200px; */
     }
     .responsive {
         display: grid;
-        grid-template-columns: 800px auto;
+        grid-template-columns: auto;
     }
 }
