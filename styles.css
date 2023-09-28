@@ -22,8 +22,8 @@ main section {
     gap: 2rem;
     border-radius: 3px;
     padding: 1em;
-    background: black;
-    /* backdrop-filter: brightness(0.4); */
+    /* background: black; */
+    backdrop-filter: blur(15px) brightness(0.8);
     align-items: center;
     max-width: 100%;
     margin-block: 2em;
